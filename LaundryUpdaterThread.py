@@ -65,8 +65,10 @@ async def skip_exceptions(awaitable):
 
 async def create_log(number, user_id):
     chat = await ext_bot.get_chat(chat_id=user_id)
-    log_text = f"{datetime.now()} | @{chat.username} | {number}"
-    print(log_text)
+    log_text = f"{datetime.now()} | @{chat.username} | {number}\n"
+    f = open("log.txt", "a+")
+    f.write(log_text)
+    f.close()
 
 
 def wait(user_id, numbers):
