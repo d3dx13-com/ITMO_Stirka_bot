@@ -70,6 +70,8 @@ async def create_log(number, user_id):
 
 
 def wait(user_id, numbers):
+    if len(numbers) == 0:
+        return
     pipe = redis_server.pipeline()
     expiration_date = int(datetime.now().timestamp() + 60 * 60 * 24 * EXPIRATION_DAYS)
     pipe.hset(f"expiration_date", user_id, expiration_date)
@@ -87,6 +89,8 @@ def took(user_id):
 
 
 def clear(user_ids, message_clear=True):
+    if len(user_ids) == 0:
+        return
     for user_id in user_ids:
         pipe = redis_server.pipeline()
         pipe.hdel(f"expiration_date", user_id)
