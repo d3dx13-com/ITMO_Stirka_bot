@@ -1,0 +1,18 @@
+{
+  "ru": {
+    "help": "HELP RUS",
+    "took": "Zabral",
+    "new_loc": "Novaia localizatia",
+    "wait": "ozidanie nomerov",
+    "wait_until": "do",
+    "done": "gotovo"
+  },
+  "eng": {
+    "help": "HELP ENG",
+    "took": "Took",
+    "new_loc": "new localization",
+    "wait": "waiting numbers",
+    "wait_until": "until",
+    "done": "done"
+  }
+}
