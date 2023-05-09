@@ -74,8 +74,10 @@ async def private_chat_handler(update: Update, context: ContextTypes.DEFAULT_TYP
     asyncio.create_task(context.bot.delete_message(update.message.chat.id, update.message.id))
     if update.message.text is None:
         return
-    LaundryUpdaterThread.clear([update.message.from_user.id], message_clear=False)
     numbers = get_numbers(update.message.text)
+    if len(numbers) == 0:
+        return
+    LaundryUpdaterThread.clear([update.message.from_user.id], message_clear=False)
     LaundryUpdaterThread.wait(update.message.from_user.id, numbers)
 
     last_message_id = redis_server.lrange(f"messages_{update.message.from_user.id}", 0, 1)[0]
